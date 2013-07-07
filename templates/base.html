@@ -7,11 +7,16 @@
     </head>
     <body>
         <main>
-            {% block content %}{% endblock %}
+            {% block content %}
+            <h1>{{ date }}</h1>
+            {% endblock %}
         </main>
         <footer>
             {% block footer %}
                 <script src="{{ url_for('static', filename='jquery-1.10.2.js') }}"></script> 
+                <script type=text/javascript>
+                    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+                </script>
             {% endblock %}
         </footer>
     </body>
