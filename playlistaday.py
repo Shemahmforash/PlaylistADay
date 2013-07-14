@@ -1,5 +1,7 @@
 from flask import Flask, render_template, jsonify, json
 import urllib
+import config
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -11,7 +13,7 @@ def main(date=None):
 @app.route('/getplaylist/<date>')
 def events(date=None):
     #TODO: change json events source
-    data = json.load(urllib.urlopen('http://wanderer-red-laptop/dayinmusic/examples/'))
+    data = json.load( urllib.urlopen( config.eventsURI ) )
 
     #TODO: parse event data and find the artist associated with each description (using echonest)
 
